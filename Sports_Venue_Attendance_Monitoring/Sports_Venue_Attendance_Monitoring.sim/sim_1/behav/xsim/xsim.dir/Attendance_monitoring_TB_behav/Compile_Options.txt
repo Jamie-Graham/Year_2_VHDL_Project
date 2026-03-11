@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "secureip" --snapshot "Attendance_monitoring_TB_behav" "xil_defaultlib.Attendance_monitoring_TB" -log "elaborate.log" 
