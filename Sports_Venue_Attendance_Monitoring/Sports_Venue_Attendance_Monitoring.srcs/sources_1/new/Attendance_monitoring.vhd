@@ -1,4 +1,4 @@
-----------------------------------------------------------------------------------
+--
 -- Company: 
 -- Engineer: 
 -- 
@@ -34,18 +34,19 @@ use IEEE.NUMERIC_STD.ALL;
 entity Attendance_monitor is
 port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is the signal being passed into Attendance monitoring 
      RESET_EXT: in STD_LOGIC; -- from the clock generation process in the TB (makes it easier to track signals by having different names)
-     ENABLE_V: in STD_LOGIC_VECTOR(0 to 3);-- in vector form to better make use of generate statements
-     LED_V:out STD_LOGIC_VECTOR (0 to 3);
+     ENABLE_V: in STD_LOGIC_VECTOR(0 to 3):="0000";-- in vector form to better make use of generate statements
+     LED_V:out STD_LOGIC_VECTOR (0 to 3):="0000";
      TOTAL_COUNT_MSB: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_MID: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_LSB: out STD_lOGIC_VECTOR(0 to 6);
-     total_Count_test: out std_logic_vector(8 downto 0));
+     total_count_test: out std_logic_vector (8 downto 0);
+     North,east,south,west: out std_logic_vector(6 downto 0));
  
      
 end Attendance_monitor;
 
 architecture Behavioral of Attendance_monitor is
-signal total_count: unsigned (8 downto 0):="000000000";
+
 type vector_of_vectors is array(natural range<>) of std_logic_vector (6 downto 0);
 signal section_count: vector_of_vectors (0 to 3);
 component Counter is
@@ -55,7 +56,14 @@ component Counter is
            COUNT_OUTPUT : out STD_LOGIC_VECTOR (6 downto 0);
            LED : out STD_LOGIC);
 end component;
-
+component Adder is 
+    port (N: in STD_LOGIC_Vector(6 downto 0);
+          E : in STD_LOGIC_Vector(6 downto 0);
+          S : in STD_LOGIC_Vector(6 downto 0);
+          W : in STD_LOGIC_Vector(6 downto 0);
+          Output: out std_logic_Vector(8 downto 0));
+    
+end component;
 begin
 counter_generation: for I in 0 to 3 generate
 
@@ -66,19 +74,15 @@ Section_Counter: counter port map(CLK=>CLK_EXT,
                                   COUNT_OUTPUT=>section_count(I));
 
 end generate ;
- 
-counters_sum: process(CLK_EXT) 
-variable count
-begin
+Total_count:adder port map(N=>section_count(0),
+                            E=>section_count(1),
+                            S=>section_count(2),
+                            W=>section_count(3),
+                            output=>total_count_test);
 
-if rising_edge (CLK_EXT) then
-total_count<=unsigned(section_count(0))+unsigned(section_count(1))+unsigned(section_count(2))+unsigned(section_count(3));
+north<=section_count(0);
+east<=section_count(1);
+south<=section_count(2);
+west<=section_count(3);
 
-
-
-
-
-total_count_test<=std_logic_vector (total_count);
-end if ;
-end process;
 end Behavioral;

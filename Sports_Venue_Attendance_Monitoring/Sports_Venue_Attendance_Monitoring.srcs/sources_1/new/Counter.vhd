@@ -48,24 +48,25 @@ begin
 counter: process(CLK,RESET)is
 variable count :unsigned(6 downto 0):="0000000";
 begin 
-
-if rising_edge (CLK) then
 if RESET= '1' then
 count:="0000000";
-elsif (ENABLE='1') then
+COUNT_OUTPUT<=std_logic_vector(count);
+elsif rising_edge (CLK) then
+if (ENABLE='1') then
 if count<maximum_count then
 count:= count+1;
-end if;
-end if;
-end if;
+end if;-- ends if statement on line 
+end if;-- ends if statement on line 
+
 if count>=caution_count then
 LED<='1';
 else
 LED<='0';
-end if;
-
-
+end if; -- ends if statement on line 
 
 COUNT_OUTPUT<=std_logic_vector(count);
+end if;-- ends if statement on line 
+
+
 end process;
 end V1;
