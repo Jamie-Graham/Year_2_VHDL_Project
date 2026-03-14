@@ -39,7 +39,7 @@ port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is th
      TOTAL_COUNT_MSB: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_MID: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_LSB: out STD_lOGIC_VECTOR(0 to 6);
-     total_count_test: out std_logic_vector (8 downto 0);
+    
      North,east,south,west: out std_logic_vector(6 downto 0));
  
      
@@ -49,6 +49,7 @@ architecture Behavioral of Attendance_monitor is
 
 type vector_of_vectors is array(natural range<>) of std_logic_vector (6 downto 0);
 signal section_count: vector_of_vectors (0 to 3);
+signal internal_count:std_logic_vector(8 downto 0); -- used to connect the adder to encoder
 component Counter is
     Port ( CLK : in STD_LOGIC;
            RESET : in STD_LOGIC;
@@ -64,6 +65,14 @@ component Adder is
           Output: out std_logic_Vector(8 downto 0));
     
 end component;
+
+component Encoder is
+    Port ( total_count : in STD_LOGIC_VECTOR (8 downto 0);
+           Output_MSB : out STD_LOGIC_VECTOR (6 downto 0);
+           Output_MID : out STD_LOGIC_VECTOR (6 downto 0);
+           Output_LSB : out STD_LOGIC_VECTOR (6 downto 0));
+            
+end component;
 begin
 counter_generation: for I in 0 to 3 generate
 
@@ -78,8 +87,13 @@ Total_count:adder port map(N=>section_count(0),
                             E=>section_count(1),
                             S=>section_count(2),
                             W=>section_count(3),
-                            output=>total_count_test);
+                            output=>internal_count);
 
+unsigned_to_display:encoder port map(
+                            total_count=>internal_count,
+                            Output_MSB=>TOTAL_COUNT_MSB,
+                            Output_MID=>TOTAL_COUNT_MID,
+                            Output_LSB=>TOTAL_COUNT_LSB);
 north<=section_count(0);
 east<=section_count(1);
 south<=section_count(2);

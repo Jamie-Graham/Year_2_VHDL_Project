@@ -44,7 +44,6 @@ port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is th
      TOTAL_COUNT_MSB: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_MID: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_LSB: out STD_lOGIC_VECTOR(0 to 6);
-     total_count_test: out std_logic_vector (8 downto 0);
   North,east,south,west: out std_logic_vector(6 downto 0));
  
      
@@ -52,17 +51,15 @@ end component;
 
 signal clock_tb,reset:std_logic;
 signal enable_tb,led_tb:std_logic_vector (0 to 3);
-signal output:std_logic_vector(8 downto 0);
-signal ncount,ecount,scount,wcount:std_logic_vector(6 downto 0);
+signal ncount,ecount,scount,wcount,MSB,MID,LSB:std_logic_vector(6 downto 0);
 begin
 DUT : Attendance_monitor port map (CLK_EXT=>Clock_tb,
                                    RESET_EXT=>reset,
                                     ENABLE_V=>enable_tb,
                                     LED_V=>LED_tb,
-                                    total_count_test=>output,
-                                    TOTAL_COUNT_LSB=>open,
-                                    TOTAL_COUNT_MID=>open,
-                                    TOTAL_COUNT_MSB=>open,
+                                    TOTAL_COUNT_MSB=>MSB,
+                                    TOTAL_COUNT_MID=>MID,
+                                    TOTAL_COUNT_LSB=>LSB,
                                     north=>ncount,
                                     east=>ecount,
                                     south=>scount,
@@ -84,10 +81,10 @@ begin
 
 reset<='0';enable_tb<="1001";wait for 100 ns ;
 reset<='1';enable_tb<="1001";wait for 100 ns ;
-reset<='0';enable_tb<="1111";wait for 500 ns ;
-reset<='1';enable_tb<="1111";wait for 100 ns ;
-reset<='0';enable_tb<="0101";wait for 900 ns ;
-reset<='0';enable_tb<="0000";wait for 1300 ns;
+reset<='0';enable_tb<="1111";wait for 1300 ns ;
+reset<='1';enable_tb<="1111";wait for 500 ns ;
+reset<='0';enable_tb<="0001";wait for 900 ns ;
+
 wait;
 end process;
 end Behavioral;

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1773509182">
+  <File Type="ROUTE-PWR" Name="Attendance_monitor_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Attendance_monitor.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="Attendance_monitor_power_summary_routed.pb"/>
+  <File Type="OPT-RQA-PB" Name="Attendance_monitor_rqa_opted.pb"/>
+  <File Type="REPORTS-TCL" Name="Attendance_monitor_reports.tcl"/>
+  <File Type="INIT-TIMING" Name="Attendance_monitor_timing_summary_init.rpt"/>
+  <File Type="OPT-DCP" Name="Attendance_monitor_opt.dcp"/>
+  <File Type="OPT-DRC" Name="Attendance_monitor_drc_opted.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Attendance_monitor_routed_bb.dcp"/>
+  <File Type="OPT-UTIL" Name="Attendance_monitor_utilization_opted.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Attendance_monitor_timing_summary_routed.pb"/>
+  <File Type="OPT-UTIL-PB" Name="Attendance_monitor_utilization_opted.pb"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="Attendance_monitor_methodology_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Attendance_monitor.hwdef"/>
+  <File Type="OPT-TIMING" Name="Attendance_monitor_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DCP" Name="Attendance_monitor_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="Attendance_monitor_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="Attendance_monitor_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="Attendance_monitor_placed.dcp"/>
+  <File Type="PLACE-IO" Name="Attendance_monitor_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="Attendance_monitor_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Attendance_monitor_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Attendance_monitor_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Attendance_monitor_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="Attendance_monitor_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Attendance_monitor_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="Attendance_monitor.bin"/>
+  <File Type="PLACE-TIMING" Name="Attendance_monitor_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="Attendance_monitor_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="Attendance_monitor_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Attendance_monitor_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="Attendance_monitor_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="Attendance_monitor_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="Attendance_monitor_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="Attendance_monitor_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-UTIL" Name="Attendance_monitor_utilization_routed.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Attendance_monitor_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="Attendance_monitor_routed.dcp"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Attendance_monitor_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-UTIL-PB" Name="Attendance_monitor_utilization_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="Attendance_monitor_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Attendance_monitor_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Attendance_monitor_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Attendance_monitor_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Attendance_monitor_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Attendance_monitor_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="Attendance_monitor_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="Attendance_monitor_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Attendance_monitor_route_status.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Attendance_monitor_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Attendance_monitor_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="Attendance_monitor_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Attendance_monitor_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Attendance_monitor_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Attendance_monitor_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Attendance_monitor_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Attendance_monitor_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Attendance_monitor_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Attendance_monitor_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Attendance_monitor_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Attendance_monitor_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="Attendance_monitor.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Attendance_monitor_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Attendance_monitor_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-MSK" Name="Attendance_monitor.msk"/>
+  <File Type="BITSTR-RBT" Name="Attendance_monitor.rbt"/>
+  <File Type="BITSTR-NKY" Name="Attendance_monitor.nky"/>
+  <File Type="BITSTR-BMM" Name="Attendance_monitor_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="Attendance_monitor.mmi"/>
+  <File Type="PDI-FILE" Name="Attendance_monitor.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="Attendance_monitor_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="Attendance_monitor_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="Attendance_monitor.rcfi"/>
+  <File Type="CFI_FILE" Name="Attendance_monitor.cfi"/>
+  <File Type="RNPI_FILE" Name="Attendance_monitor.rnpi"/>
+  <File Type="RCDO-FILE" Name="Attendance_monitor.rcdo"/>
+  <File Type="MARKER-RNPI-FILE" Name="Attendance_monitor_markers.rnpi"/>
+  <File Type="MARKER-RCDO-FILE" Name="Attendance_monitor_markers.rcdo"/>
+  <File Type="BOOT_RNPI_FILE" Name="Attendance_monitor_boot.rnpi"/>
+  <File Type="BOOT_MARKER_RNPI_FILE" Name="Attendance_monitor_boot_markers.rnpi"/>
+  <File Type="PL_RNPI_FILE" Name="Attendance_monitor_pld.rnpi"/>
+  <File Type="PL_MARKER_RNPI_FILE" Name="Attendance_monitor_pld_markers.rnpi"/>
+  <File Type="PL_MASK_RNPI_FILE" Name="Attendance_monitor_pld_mask.rnpi"/>
+  <File Type="PL_SHUTDOWN_RNPI_FILE" Name="Attendance_monitor_pld_shutdown.rnpi"/>
+  <File Type="PL_UNMASK_RNPI_FILE" Name="Attendance_monitor_pld_unmask.rnpi"/>
+  <File Type="PL-RCDO-FILE" Name="Attendance_monitor_pld.rcdo"/>
+  <File Type="PL-CLEAR-RCDO-FILE" Name="Attendance_monitor_pld_clear.rcdo"/>
+  <File Type="PL_MARKER_RCDO_FILE" Name="Attendance_monitor_pld_markers.rcdo"/>
+  <File Type="PL_MASK_RCDO_FILE" Name="Attendance_monitor_pld_mask.rcdo"/>
+  <File Type="PL_UNMASK_MARKER_RCDO_FILE" Name="Attendance_monitor_pld_unmask_markers.rcdo"/>
+  <File Type="PL_UNMASK_RCDO_FILE" Name="Attendance_monitor_pld_unmask.rcdo"/>
+  <File Type="NPI_FILE" Name="Attendance_monitor.npi"/>
+  <File Type="RBD_FILE" Name="Attendance_monitor.rbd"/>
+  <File Type="MMI-FILE" Name="Attendance_monitor.mmi"/>
+  <File Type="BIF-FILE" Name="Attendance_monitor.bif"/>
+  <File Type="BOOT-BIF-FILE" Name="Attendance_monitor_boot.bif"/>
+  <File Type="PL-BIF-FILE" Name="Attendance_monitor_pld.bif"/>
+  <File Type="LTX-FILE" Name="Attendance_monitor.ltx"/>
+  <File Type="BOOT-LTX-FILE" Name="Attendance_monitor_boot.ltx"/>
+  <File Type="PL-LTX-FILE" Name="Attendance_monitor_pld.ltx"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Attendance_monitor.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="Attendance_monitor.sysdef"/>
+  <File Type="BG-BGN" Name="Attendance_monitor.bgn"/>
+  <File Type="BG-DRC" Name="Attendance_monitor.drc"/>
+  <File Type="RDI-RDI" Name="Attendance_monitor.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="Attendance_monitor_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="Attendance_monitor_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/Adder.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Counter.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Encoder.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Attendance_monitoring.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Attendance_monitor"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/Downloads/Basys3_Master.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/Jamie Graham/Downloads/Basys3_Master.xdc"/>
+        <Attr Name="ImportTime" Val="1770313944"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <File Path="$PSRCDIR/utils_1/imports/synth_1/Attendance_monitoring.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2025"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
