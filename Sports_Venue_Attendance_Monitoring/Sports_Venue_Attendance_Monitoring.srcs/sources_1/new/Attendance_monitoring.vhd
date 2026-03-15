@@ -36,6 +36,7 @@ port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is th
      RESET_EXT: in STD_LOGIC; -- from the clock generation process in the TB (makes it easier to track signals by having different names)
      ENABLE_V: in STD_LOGIC_VECTOR(0 to 3):="0000";-- in vector form to better make use of generate statements
      LED_V:out STD_LOGIC_VECTOR (0 to 3):="0000";
+     LEADING_ZERO:out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_MSB: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_MID: out STD_lOGIC_VECTOR(0 to 6);
      TOTAL_COUNT_LSB: out STD_lOGIC_VECTOR(0 to 6);
@@ -46,10 +47,16 @@ port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is th
 end Attendance_monitor;
 
 architecture Behavioral of Attendance_monitor is
+--constant max_count_one:integer:=250000; -- since we want a refresh of 400 Hz and the board uses 100 Mhz, need to split using count
+--constant max_count_two:integer:=100000000;-- we want one count to be added per second, which means we need to count 100,000,000 per second
+constant max_count_one:integer:=5; -- FOR SIM ONLY, used for testing, ENSURE THIS IS COMMENTED OUT WHEN SYNTHESISING
+constant max_count_two:integer:=5; -- FOR SIM ONLY, used for testing, ENSURE THIS IS COMMENTED OUT WHEN SYNTHESISING 
 
 type vector_of_vectors is array(natural range<>) of std_logic_vector (6 downto 0);
 signal section_count: vector_of_vectors (0 to 3);
 signal internal_count:std_logic_vector(8 downto 0); -- used to connect the adder to encoder
+signal display_select:std_logic_vector(1 downto 0); -- used to allow for each of the seven segment display to refresh 100 times per second so signal is 400 Hz
+signal internal_clock:std_logic; -- used so that when pressing a button, enable doesnt trigger thousands of times, frequency of 1 Hz
 component Counter is
     Port ( CLK : in STD_LOGIC;
            RESET : in STD_LOGIC;
@@ -68,6 +75,7 @@ end component;
 
 component Encoder is
     Port ( total_count : in STD_LOGIC_VECTOR (8 downto 0);
+           Leading_zero:out std_logic_vector (6 downto 0);
            Output_MSB : out STD_LOGIC_VECTOR (6 downto 0);
            Output_MID : out STD_LOGIC_VECTOR (6 downto 0);
            Output_LSB : out STD_LOGIC_VECTOR (6 downto 0));
@@ -76,7 +84,7 @@ end component;
 begin
 counter_generation: for I in 0 to 3 generate
 
-Section_Counter: counter port map(CLK=>CLK_EXT,
+Section_Counter: counter port map(CLK=>INTERNAL_CLOCK,
                                   RESET=>RESET_EXT,
                                   ENABLE=>ENABLE_V(I),
                                   LED=>LED_V(I),
@@ -91,6 +99,7 @@ Total_count:adder port map(N=>section_count(0),
 
 unsigned_to_display:encoder port map(
                             total_count=>internal_count,
+                            Leading_zero=>LEADING_ZERO,
                             Output_MSB=>TOTAL_COUNT_MSB,
                             Output_MID=>TOTAL_COUNT_MID,
                             Output_LSB=>TOTAL_COUNT_LSB);
@@ -98,5 +107,37 @@ north<=section_count(0);
 east<=section_count(1);
 south<=section_count(2);
 west<=section_count(3);
+select_displays:process(clk_ext) is 
 
+variable count:unsigned(17 downto 0):= (others => '0');-- need 18 bits as 2^18 = 262,144
+
+variable sel : unsigned(1 downto 0):="00";
+begin
+if rising_edge(clk_ext) then 
+if count<max_count_one-1 then
+count:= count+1;
+else
+count:=(others=>'0');
+sel:=sel+1;
+end if ;
+display_select<=std_logic_vector(sel);
+end if;
+end process;
+
+
+clk_divide:process (clk_ext) is 
+variable count :unsigned(26 downto 0):= (others => '0'); -- need 27 bits as 2^27 =134,217,728
+variable clk:std_logic :='0';
+
+begin 
+if rising_edge (clk_ext) then
+if count<max_count_two-1 then
+count:= count+1;
+else
+count:=(others=> '0');
+clk:=not clk; 
+end if;
+internal_clock<=clk;
+end if;
+end process;
 end Behavioral;

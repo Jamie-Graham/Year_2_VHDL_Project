@@ -33,6 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity Encoder is
     Port ( total_count : in STD_LOGIC_VECTOR (8 downto 0);
+           Leading_zero:out STD_LOGIC_VECTOR (6 downto 0);
            Output_MSB : out STD_LOGIC_VECTOR (6 downto 0);
            Output_MID : out STD_LOGIC_VECTOR (6 downto 0);
            Output_LSB : out STD_LOGIC_VECTOR (6 downto 0));
@@ -41,49 +42,52 @@ end Encoder;
 
 architecture V1 of Encoder is
 type vector_of_vectors is array(natural range<>) of std_logic_vector (6 downto 0);-- gives a vector where each element is a 7 bit logic vector
-type int_vector is array (2 downto 0) of integer range 0 to 9; -- allows for a array of integers where each element is a number 1 to 9 
+type int_vector is array (3 downto 0) of integer range 0 to 9; -- allows for a array of integers where each element is a number 1 to 9 
 
 begin
 encoding:process (total_count)-- triggers each time the input changes, doesnt need clock as the singals being inputted are already tied to clock thorugh the counter
 variable in_int: integer;-- declare variable that stores the inputed value in integer form
 variable integers_single_digits: int_vector; -- user defined type allows for for loop to be used
-variable output_vector: vector_of_vectors(2 downto 0);-- used in for loop to prevent repeating case three times
+variable output_vector: vector_of_vectors(3 downto 0);-- used in for loop to prevent repeating case three times
 begin 
 
 in_int:= to_integer (unsigned(total_count));
+integers_single_digits(3):=0;
 integers_single_digits(2):=in_int/100; -- this gives us the 100's number of the total count
 integers_single_digits(1):=(in_int-integers_single_digits(2)*100)/10;-- this gives us the 10's number of the total count
 integers_single_digits(0):=in_int-((integers_single_digits(2)*100)+(integers_single_digits(1)*10)); --this gives us the digits of total count 
 
-for I in 2 downto 0 loop
+for I in 3 downto 0 loop
 case integers_single_digits(I) is 
     when 0 =>
-    output_vector(I):="1111110";
+    output_vector(I):="0000001";
     when  1 =>
-    output_vector(I):="0110000";
+    output_vector(I):="1001111";
     when  2 =>
-    output_vector(I):="1101101";
+    output_vector(I):="0010010";
     when  3 =>
-    output_vector(I):="1111001";
+    output_vector(I):="0000110";
     when  4 =>
-    output_vector(I):="0110011";
+    output_vector(I):="1001100";
     when  5 =>
-    output_vector(I):="1011011";
+    output_vector(I):="0100100";
     when  6 =>
-    output_vector(I):="1011111";
+    output_vector(I):="0100000";
     when  7 =>
-    output_vector(I):="1110000";
+    output_vector(I):="0001111";
     when  8 =>
-    output_vector(I):="1111111";
+    output_vector(I):="0000000";
     when  9 =>
-    output_vector(I):="1110011";
+    output_vector(I):="0001100";
     when others=>
-    output_vector(I):="1001111"; -- used to show if invalid input is displayed makes a 'E' SHOULD never happen
+    output_vector(I):="0110000"; -- used to show if invalid input is displayed makes a 'E' SHOULD never happen
     
+    --These signals are ACTIVE LOW
     
     end case;
 
 end loop;
+leading_zero<=output_vector(3); -- is always zero as counter only goes to 400, but counter needs to display 0400
 Output_MSB<=output_vector(2); 
 Output_MID<=output_vector(1);
 Output_LSB<=output_vector(0);-- assigns 7 segment code to output vectors after each for statement is completed
