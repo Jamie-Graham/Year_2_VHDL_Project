@@ -41,31 +41,25 @@ port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is th
      RESET_EXT: in STD_LOGIC; -- from the clock generation process in the TB (makes it easier to track signals by having different names)
      ENABLE_V: in STD_LOGIC_VECTOR(0 to 3);-- in vector form to better make use of generate statements
      LED_V:out STD_LOGIC_VECTOR (0 to 3);
-     LEADING_ZERO:out STD_lOGIC_VECTOR(0 to 6);
-     TOTAL_COUNT_MSB: out STD_lOGIC_VECTOR(0 to 6);
-     TOTAL_COUNT_MID: out STD_lOGIC_VECTOR(0 to 6);
-     TOTAL_COUNT_LSB: out STD_lOGIC_VECTOR(0 to 6);
-  North,east,south,west: out std_logic_vector(6 downto 0));
+     OUTPUT_DISPLAY:out STD_lOGIC_VECTOR(6 downto 0);
+     an: out STD_logic_vector(0 to 3)
+   
  
+  );
      
 end component;
 
 signal clock_tb,reset:std_logic;
-signal enable_tb,led_tb:std_logic_vector (0 to 3);
-signal ncount,ecount,scount,wcount,zero,MSB,MID,LSB:std_logic_vector(6 downto 0);
+signal enable_tb,led_tb,anode:std_logic_vector (0 to 3);
+signal out_tb:std_logic_vector(6 downto 0);
 begin
 DUT : Attendance_monitor port map (CLK_EXT=>Clock_tb,
                                    RESET_EXT=>reset,
                                     ENABLE_V=>enable_tb,
                                     LED_V=>LED_tb,
-                                    LEADING_ZERO=>zero,
-                                    TOTAL_COUNT_MSB=>MSB,
-                                    TOTAL_COUNT_MID=>MID,
-                                    TOTAL_COUNT_LSB=>LSB,
-                                    north=>ncount,
-                                    east=>ecount,
-                                    south=>scount,
-                                    west=>wcount
+                              
+                                    output_display=>out_tb,
+                                    an=>anode
                                    );
 clock:process 
 begin 
@@ -83,8 +77,7 @@ begin
 
 reset<='0';enable_tb<="1001";wait for 100 ns ;
 reset<='1';enable_tb<="1001";wait for 100 ns ;
-reset<='0';enable_tb<="1111";wait for 1000ns  ;
-reset<='1';enable_tb<="1111";wait for 100ns  ;
+reset<='0';enable_tb<="1111";wait for 1000ns  ;  
 reset<='0';enable_tb<="0001"; 
 
 wait;
