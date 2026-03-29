@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Fri Mar 20 16:41:06 2026
+| Date         : Fri Mar 27 20:54:17 2026
 | Host         : Jamie-Desktop running 64-bit major release  (build 9200)
 | Command      : report_methodology -file Attendance_monitor_methodology_drc_routed.rpt -pb Attendance_monitor_methodology_drc_routed.pb -rpx Attendance_monitor_methodology_drc_routed.rpx
 | Design       : Attendance_monitor

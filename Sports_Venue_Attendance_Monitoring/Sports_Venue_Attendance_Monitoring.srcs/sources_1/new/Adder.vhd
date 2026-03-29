@@ -45,15 +45,11 @@ signal int1,int2,int3,int4:unsigned (6 downto 0);
 signal out1:unsigned(8 downto 0);
 begin
  
-
-
 int1<=unsigned (N);
 int2<=unsigned (E);
 int3<=unsigned (S);
 int4<=unsigned (W);
 out1<=resize(int1,9)+resize(int2,9)+resize(int3,9)+resize(int4,9);
 output<=std_logic_vector (out1);
-
-
 
 end Behavioral;

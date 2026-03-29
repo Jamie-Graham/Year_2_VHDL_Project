@@ -50,22 +50,23 @@ variable count :unsigned(6 downto 0):="0000000";
 begin 
 if RESET= '1' then
 count:="0000000";
+LED<='0';
 COUNT_OUTPUT<=std_logic_vector(count);
 elsif rising_edge (CLK) then
 if (ENABLE='1') then
 if count<maximum_count then
 count:= count+1;
-end if;-- ends if statement on line 
-end if;-- ends if statement on line 
+end if;-- ends if statement on line 56 
+end if;-- ends if statement on line 55
 
 if count>=caution_count then
 LED<='1';
 else
 LED<='0';
-end if; -- ends if statement on line 
+end if; -- ends if statement on line 61
 
 COUNT_OUTPUT<=std_logic_vector(count);
-end if;-- ends if statement on line 
+end if;-- ends if statement on line 51
 
 
 end process;

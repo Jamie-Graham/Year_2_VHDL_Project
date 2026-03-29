@@ -38,16 +38,17 @@ end Encoder_TB;
 architecture Behavioral of Encoder_TB is
 component Encoder is
     Port ( total_count : in STD_LOGIC_VECTOR (8 downto 0);
+           Leading_zero:out STD_LOGIC_VECTOR (6 downto 0);
            Output_MSB : out STD_LOGIC_VECTOR (6 downto 0);
            Output_MID : out STD_LOGIC_VECTOR (6 downto 0);
            Output_LSB : out STD_LOGIC_VECTOR (6 downto 0));
          
 end component;
 signal input_TB:std_logic_vector (8 downto 0);
-signal MSB_TB,MID_TB,LSB_TB: std_logic_vector (6 downto 0);
+signal L_Zero,MSB_TB,MID_TB,LSB_TB: std_logic_vector (6 downto 0);
  
 begin
-DUT: Encoder port map (total_count=>input_TB,output_MSB=>MSB_TB,output_MID=>MID_TB,output_LSB=>LSB_TB);
+DUT: Encoder port map (total_count=>input_TB,Leading_Zero=>L_Zero,output_MSB=>MSB_TB,output_MID=>MID_TB,output_LSB=>LSB_TB);
 
 
 stimuli:process

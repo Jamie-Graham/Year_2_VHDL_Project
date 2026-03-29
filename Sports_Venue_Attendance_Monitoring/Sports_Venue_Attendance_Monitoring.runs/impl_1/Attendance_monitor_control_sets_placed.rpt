@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Fri Mar 20 16:40:49 2026
+| Date         : Fri Mar 27 20:53:58 2026
 | Host         : Jamie-Desktop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Attendance_monitor_control_sets_placed.rpt
 | Design       : Attendance_monitor
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     5 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    26 |
+| Unused register locations in slices containing registers |    20 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -59,8 +59,8 @@ Table of Contents
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               3 |            2 |
-| No           | No                    | Yes                    |              28 |           10 |
-| No           | Yes                   | No                     |              43 |           12 |
+| No           | No                    | Yes                    |              28 |            9 |
+| No           | Yes                   | No                     |              41 |           11 |
 | Yes          | No                    | No                     |               4 |            4 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
@@ -75,9 +75,9 @@ Table of Contents
 +------------------------+-------------------------------------------------+-----------------------------+------------------+----------------+--------------+
 |  CLK_EXT_IBUF_BUFG     |                                                 |                             |                2 |              3 |         1.50 |
 |  clk_divide.clk_reg__0 | counter_generation[0].Section_Counter/RESET_EXT |                             |                4 |              4 |         1.00 |
-|  CLK_EXT_IBUF_BUFG     |                                                 | clear                       |                5 |             18 |         3.60 |
-|  CLK_EXT_IBUF_BUFG     |                                                 | clk_divide.count[0]_i_1_n_0 |                7 |             25 |         3.57 |
-|  clk_divide.clk_reg__0 |                                                 | RESET_EXT_IBUF              |               10 |             28 |         2.80 |
+|  CLK_EXT_IBUF_BUFG     |                                                 | clear                       |                5 |             17 |         3.40 |
+|  CLK_EXT_IBUF_BUFG     |                                                 | clk_divide.count[0]_i_1_n_0 |                6 |             24 |         4.00 |
+|  clk_divide.clk_reg__0 |                                                 | RESET_EXT_IBUF              |                9 |             28 |         3.11 |
 +------------------------+-------------------------------------------------+-----------------------------+------------------+----------------+--------------+
 
 

@@ -62,10 +62,11 @@ end process;
 sitmuli:process 
 begin 
 
-RESET_TB<='0';ENABLE_TB<='1';wait for 400 ns; 
-RESET_TB<='1';ENABLE_TB<='1';wait for 100 ns; 
-RESET_TB<='0';ENABLE_TB<='1';wait for 1400 ns;
+RESET_TB<='0';ENABLE_TB<='1';wait for 200 ns; 
 RESET_TB<='1';ENABLE_TB<='1';wait for 100 ns;
+RESET_TB<='0';ENABLE_TB<='0';wait for 100 ns; 
+RESET_TB<='0';ENABLE_TB<='1';wait for 1400 ns;
+RESET_TB<='1';ENABLE_TB<='0';wait for 100 ns;
 RESET_TB<='0';ENABLE_TB<='1';
 wait; 
 end process;

@@ -72,6 +72,8 @@ begin
 input1<="1111111";input2<="1111111";input3<="1111111";input4<="1111111";wait for 100 ns;
 input1<="0000000";input2<="1011001";input3<="0110011";input4<="1101101";wait for 100 ns;
 input1<="1100110";input2<="1001011";input3<="1010101";input4<="0101010";wait for 100 ns;
+input1<="0000000";input2<="0000000";input3<="0000000";input4<="0000000";wait for 100 ns;
+input1<="1100000";input2<="1011111";input3<="0100101";input4<="0101110";wait for 100 ns;
 
 end process;
 end Behavioral;

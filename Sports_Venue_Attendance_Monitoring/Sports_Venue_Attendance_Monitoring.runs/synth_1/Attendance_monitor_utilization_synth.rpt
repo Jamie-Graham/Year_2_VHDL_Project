@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Fri Mar 20 16:40:16 2026
+| Date         : Fri Mar 27 20:53:14 2026
 | Host         : Jamie-Desktop running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Attendance_monitor_utilization_synth.rpt -pb Attendance_monitor_utilization_synth.pb
 | Design       : Attendance_monitor
@@ -34,8 +34,8 @@ Table of Contents
 | Slice LUTs*             |  490 |     0 |          0 |     20800 |  2.36 |
 |   LUT as Logic          |  490 |     0 |          0 |     20800 |  2.36 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         |   78 |     0 |          0 |     41600 |  0.19 |
-|   Register as Flip Flop |   78 |     0 |          0 |     41600 |  0.19 |
+| Slice Registers         |   76 |     0 |          0 |     41600 |  0.18 |
+|   Register as Flip Flop |   76 |     0 |          0 |     41600 |  0.18 |
 |   Register as Latch     |    0 |     0 |          0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
@@ -60,7 +60,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | 0     |          Yes |           - |          Set |
 | 28    |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 50    |          Yes |       Reset |            - |
+| 48    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -152,13 +152,13 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |  211 |                 LUT |
-| CARRY4   |   93 |          CarryLogic |
+| LUT6     |  210 |                 LUT |
+| CARRY4   |   92 |          CarryLogic |
 | LUT3     |   88 |                 LUT |
 | LUT5     |   87 |                 LUT |
 | LUT2     |   84 |                 LUT |
-| LUT4     |   67 |                 LUT |
-| FDRE     |   50 |        Flop & Latch |
+| LUT4     |   68 |                 LUT |
+| FDRE     |   48 |        Flop & Latch |
 | LUT1     |   33 |                 LUT |
 | FDCE     |   28 |        Flop & Latch |
 | OBUF     |   15 |                  IO |

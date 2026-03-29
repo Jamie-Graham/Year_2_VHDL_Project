@@ -34,8 +34,8 @@ use IEEE.NUMERIC_STD.ALL;
 entity Attendance_monitor is
 port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is the signal being passed into Attendance monitoring 
      RESET_EXT: in STD_LOGIC; -- from the clock generation process in the TB (makes it easier to track signals by having different names)
-     ENABLE_V: in STD_LOGIC_VECTOR(0 to 3):="0000";-- in vector form to better make use of generate statements
-     LED_V:out STD_LOGIC_VECTOR (0 to 3):="0000";
+     ENABLE_V: in STD_LOGIC_VECTOR(0 to 3);-- in vector form to better make use of generate statements
+     LED_V:out STD_LOGIC_VECTOR (0 to 3);-- in vector form to better make use of generate statements
      OUTPUT_DISPLAY:out STD_lOGIC_VECTOR(6 downto 0);
      an: out STD_logic_vector(0 to 3)
 
@@ -45,10 +45,10 @@ port(CLK_EXT:in STD_logic; -- EXT is used to denote external, meaning this is th
 end Attendance_monitor;
 
 architecture Behavioral of Attendance_monitor is
-constant max_count_one:integer:=250000; -- since we want a refresh of 400 Hz and the board uses 100 Mhz, need to split using count
-constant max_count_two:integer:=25000000;-- we want one count to be added per second, which means we need to count 25,000,000 per second
---constant max_count_one:integer:=5; -- FOR SIM ONLY, used for testing, ENSURE THIS IS COMMENTED OUT WHEN SYNTHESISING
---constant max_count_two:integer:=5; -- FOR SIM ONLY, used for testing, ENSURE THIS IS COMMENTED OUT WHEN SYNTHESISING 
+--constant max_count_one:integer:=125000; -- since we want a refresh of 400 Hz and the board uses 100 Mhz, need to split using count
+--constant max_count_two:integer:=12500000;-- we want one count to be added per second, which means we need to count 25,000,000 per second
+constant max_count_one:integer:=2; -- FOR SIM ONLY, used for testing, ENSURE THIS IS COMMENTED OUT WHEN SYNTHESISING
+constant max_count_two:integer:=2; -- FOR SIM ONLY, used for testing, ENSURE THIS IS COMMENTED OUT WHEN SYNTHESISING 
 
 type vector_of_vectors is array(natural range<>) of std_logic_vector (6 downto 0);
 signal section_count: vector_of_vectors (0 to 3);
@@ -127,7 +127,7 @@ MUX_for_display:MUX port map(
 
 select_displays:process(clk_ext) is 
 
-variable count:unsigned(17 downto 0):= (others => '0');-- need 18 bits as 2^18 = 262,144 > 250,000
+variable count:unsigned(16 downto 0):= (others => '0');-- need 17 bits as 2^17= 131,072 > 125,000
 
 variable sel : unsigned(1 downto 0):="00";
 begin
@@ -136,7 +136,7 @@ if count<max_count_one-1 then
 count:= count+1;
 else
 count:=(others=>'0');
-sel:=sel+1;
+sel:=sel+1;-- allows the selection data for the MUX to cycle between the four inputs in a loop
 end if ;
 display_select<=std_logic_vector(sel);
 
@@ -155,11 +155,11 @@ case display_select is
         when "11" =>
             an<="1110";
         when others=>
-        an<="0000"; --turns off all displays
+        an<="0000"; --turns off all displays , shouldn't happen theoretically
 end case;
 end process;
 clk_divide:process (clk_ext) is 
-variable count :unsigned(24 downto 0):= (others => '0'); -- need 25 bits as 2^25 =33,554,432 > 25,000,000
+variable count :unsigned(23 downto 0):= (others => '0'); -- need 24 bits as 2^24 =16,777,216 > 12,500,000
 variable clk:std_logic :='0';
 
 begin 
